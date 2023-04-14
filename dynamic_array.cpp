@@ -1,7 +1,9 @@
 #include "dynamic_array.h"
 
-DynamicArray::DynamicArray() { arr = nullptr; 
-size = 0;}
+DynamicArray::DynamicArray() {
+  arr = nullptr;
+  size = 0;
+}
 
 unsigned int DynamicArray::getSize() { return size; }
 
