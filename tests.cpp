@@ -1,6 +1,8 @@
 #include <gtest/gtest.h>
 #include "double_linked_list.h"
 #include "dynamic_array.h"
+#include "binary_heap.h"
+
 
 TEST(DoubleLinkedListTest, Test1) {
     DoublyLinkedList list1;
@@ -77,6 +79,24 @@ TEST(DynamicArray, Test8) {
     array1.add(5);
     array1.addAtIndex(20, 1);
     ASSERT_EQ(array1.getValue(1), 20);
+}
+
+TEST(BinaryHeap, Test9) {
+    BinaryHeap heap1;
+    ASSERT_EQ(heap1.getSize(), 0);
+}
+
+TEST(BinaryHeap, Test10) {
+    BinaryHeap heap1;
+    heap1.add(10);
+    heap1.add(50);
+    heap1.add(10);
+    heap1.add(50);
+    heap1.add(25);
+    int max = heap1.popMax();
+    ASSERT_EQ(heap1.popMax(), 50);
+    ASSERT_EQ(max, 50);
+    ASSERT_EQ(heap1.popMax(), 25);
 }
 
 
