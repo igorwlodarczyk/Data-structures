@@ -58,7 +58,27 @@ TEST(DynamicArray, Test6) {
     array1.add(3);
     array1.add(4);
     ASSERT_EQ(array1.getSize(), 2);
+    ASSERT_EQ(array1.getValue(0), 3);
 }
+
+TEST(DynamicArray, Test7) {
+    DynamicArray array1;
+    array1.add(3);
+    array1.add(4);
+    array1.add(5);
+    array1.removeAtIndex(1);
+    ASSERT_EQ(array1.getValue(1), 5);
+}
+
+TEST(DynamicArray, Test8) {
+    DynamicArray array1;
+    array1.add(3);
+    array1.add(4);
+    array1.add(5);
+    array1.addAtIndex(20, 1);
+    ASSERT_EQ(array1.getValue(1), 20);
+}
+
 
 int main(int argc, char** argv) {
     ::testing::InitGoogleTest(&argc, argv);
