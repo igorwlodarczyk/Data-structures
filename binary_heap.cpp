@@ -6,22 +6,21 @@ class BinaryHeap{
     private:
     std::vector<int> heap;
 
-    unsigned int getParent(unsigned int i){
+    int getParent(unsigned int i){
         return (i - 1)/2;
     }
-
-    unsigned int getLeftChild(unsigned int i){
+    int getLeftChild(unsigned int i){
         return 2 * i + 1;
     }
 
-    unsigned int getRightChild(unsigned int i){
+    int getRightChild(unsigned int i){
         return 2 * i + 2;
     }
 
     public:
     unsigned int getSize(){
         return heap.size();
-    }
+    }   
 
     void add(int value){
         /*
@@ -52,7 +51,7 @@ class BinaryHeap{
         */
 
         int max_value = heap[0];
-        swap(heap[0], heap[heap.size() - 1])
+        swap(heap[0], heap[heap.size() - 1]);
         heap.pop_back();
         int i = 0;
         while(getLeftChild(i) < heap.size()){
@@ -74,4 +73,4 @@ class BinaryHeap{
     }
 
 
-}
+};

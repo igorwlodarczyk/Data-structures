@@ -53,10 +53,10 @@ void DoublyLinkedList::addAtIndex(int value, int index) {
     for (int i = 0; i < index; i++) {
       current = current->next;
     }
-    newNode->prev = current;
-    newNode->next = current->next;
-    current->next->prev = newNode;
-    current->next = newNode;
+    newNode->prev = current->prev;
+    newNode->next = current;
+    current->prev->next = newNode;
+    current->prev = newNode;
     size++;
   }
 }

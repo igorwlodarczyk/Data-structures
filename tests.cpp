@@ -53,6 +53,13 @@ TEST(DoubleLinkedListTest, Test5) {
     ASSERT_EQ(list1.get(1), 3);
 }
 
+TEST(DynamicArray, Test6) {
+    DynamicArray array1;
+    array1.add(3);
+    array1.add(4);
+    ASSERT_EQ(array1.getSize(), 2);
+}
+
 int main(int argc, char** argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
