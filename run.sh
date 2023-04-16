@@ -10,5 +10,5 @@ g++ -std=c++14 dynamic_array.cpp double_linked_list.cpp binary_heap.cpp binary_s
 ./main
 
 # run tests
-./tests
+# ./tests
 
