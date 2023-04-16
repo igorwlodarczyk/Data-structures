@@ -2,6 +2,7 @@
 #include "double_linked_list.h"
 #include "dynamic_array.h"
 #include "binary_heap.h"
+#include "binary_search_tree.h"
 
 
 TEST(DoubleLinkedListTest, Test1) {
@@ -98,6 +99,33 @@ TEST(BinaryHeap, Test10) {
     ASSERT_EQ(max, 50);
     ASSERT_EQ(heap1.popMax(), 25);
 }
+
+TEST(BinarySearchTree, Test11) {
+    BinarySearchTree bst;
+    bst.add(3);
+    bst.add(4);
+    bst.add(100);
+    bst.add(10);
+    bst.add(55);
+    ASSERT_EQ(bst.getSize(), 5);
+    ASSERT_EQ(bst.searchValue(10), true);
+    ASSERT_EQ(bst.searchValue(105), false);
+    ASSERT_EQ(bst.getMax(), 100);
+    ASSERT_EQ(bst.getMin(), 3);
+}
+
+TEST(BinarySearchTree, Test12) {
+    BinarySearchTree bst;
+    bst.add(3);
+    bst.add(4);
+    bst.add(100);
+    bst.add(10);
+    bst.add(55);
+    ASSERT_EQ(bst.searchValue(55), true);
+    bst.deleteValue(55);
+    ASSERT_EQ(bst.searchValue(55), false);
+}
+
 
 
 int main(int argc, char** argv) {

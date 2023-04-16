@@ -1,71 +1,60 @@
-struct Node {
-    int value;
-    Node* left;
-    Node* right;
-    Node(int val) : value(val), left(nullptr), right(nullptr) {}
-};
+#include "binary_search_tree.h"
 
 
-class BinarySearchTree{
-    private:
-    unsigned int size;
-    Node* root;
+BinarySearchTree::BinarySearchTree() : size(0), root(nullptr) {}
 
-    public:
-    BinarySearchTree() : size(0), root(nullptr) {}
+unsigned int BinarySearchTree::getSize(){
+    return size;
+}
 
-    unsigned int getSize(){
-        return size;
-    }
-
-    void add(int value){
-        Node *newNode = new Node(value);
-        if(root == nullptr){
-            root = newNode;
-        }else{
-            Node *temp = root;
-            while(1){
-                if(value > temp->value){
-                    if(temp->right == nullptr){
-                        temp->right = newNode;
-                        break;
-                    }else{
-                        temp = temp->right;
-                    }
+void BinarySearchTree::add(int value){
+    Node_ *newNode = new Node_(value);
+    if(root == nullptr){
+        root = newNode;
+    }else{
+        Node_ *temp = root;
+        while(1){
+            if(value > temp->value){
+                if(temp->right == nullptr){
+                    temp->right = newNode;
+                    break;
                 }else{
-                    if(temp->left == nullptr){
-                        temp->left = newNode;
-                        break;
-                    }else{
-                        temp = temp->left;
-                    }
-                }
-
-            }
-        }
-
-        size++;
-    }
-
-    bool searchValue(int value){
-        Node *temp = root;
-        while(temp != nullptr){
-            if(value == temp->value){
-                return true;
-            }else{
-                if(value > temp->value){
                     temp = temp->right;
+                }
+            }else{
+                if(temp->left == nullptr){
+                    temp->left = newNode;
+                    break;
                 }else{
                     temp = temp->left;
                 }
             }
+
         }
-        return false;
     }
 
-    void deleteValue(int value){
-    Node *parent = nullptr;
-    Node *current = root;
+    size++;
+}
+
+bool BinarySearchTree::searchValue(int value){
+    Node_ *temp = root;
+    while(temp != nullptr){
+        if(value == temp->value){
+            return true;
+        }else{
+            if(value > temp->value){
+                temp = temp->right;
+            }else{
+                temp = temp->left;
+            }
+        }
+    }
+    return false;
+}
+
+void BinarySearchTree::deleteValue(int value){
+    Node_ *parent = nullptr;
+    Node_ *current = root;
 
     // Find the node to be deleted and its parent
     while(current != nullptr && current->value != value){
@@ -98,7 +87,7 @@ class BinarySearchTree{
         delete current;
     }else if(current->left == nullptr || current->right == nullptr){
         // Case 2: Node has one child
-        Node *child = (current->left != nullptr) ? current->left : current->right;
+        Node_ *child = (current->left != nullptr) ? current->left : current->right;
         if(current == root){
             // Special case for deleting the root node
             root = child;
@@ -113,8 +102,8 @@ class BinarySearchTree{
     }else{
         // Case 3: Node has two children
         // Find the minimum value in the right subtree
-        Node *successorParent = current;
-        Node *successor = current->right;
+        Node_ *successorParent = current;
+        Node_ *successor = current->right;
         while(successor->left != nullptr){
             successorParent = successor;
             successor = successor->left;
@@ -132,26 +121,25 @@ class BinarySearchTree{
 
     size--;
 
-    }
+}
 
-    int getMax(){
-        if(size > 0){
-            Node *temp = root;
-            while(temp->right != nullptr){
-                temp = temp->right;
-            }
-            return temp->value;
+
+int BinarySearchTree::getMax(){
+    if(size > 0){
+        Node_ *temp = root;
+        while(temp->right != nullptr){
+            temp = temp->right;
         }
-    }
+        return temp->value;
+    }else return 0;
+}
 
-    int getMin(){
-        if(size > 0){
-            Node *temp = root;
-            while(temp->left != nullptr){
-                temp = temp->left;
-            }
-            return temp->value;
+int BinarySearchTree::getMin(){
+    if(size > 0){
+        Node_ *temp = root;
+        while(temp->left != nullptr){
+            temp = temp->left;
         }
-    }
-
-};
+        return temp->value;
+    }else return 0;
+}
