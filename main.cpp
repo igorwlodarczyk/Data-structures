@@ -392,7 +392,8 @@ void binarySearchTreeMenu(){
     cout<<"3. Delete value"<<endl;
     cout<<"4. Get max"<<endl;
     cout<<"5. Get min"<<endl;
-    cout<<"6. Exit"<<endl;
+    cout<<"6. Display binary search tree"<<endl;
+    cout<<"7. Exit"<<endl;
 }
 
 int main() {
@@ -516,6 +517,7 @@ int main() {
                 break;
                 case 4:
                 for(int i = 0; i < array1.getSize(); i++){
+                    cout<<"index "<<i<<": ";
                     cout<<array1.getValue(i)<<endl;
                 }
                 cout<<"Press enter to continue..."<<endl;
@@ -573,6 +575,7 @@ int main() {
                 break;
                 case 7:
                 for(int i = 0; i < list1.getSize(); i++){
+                    cout<<"index "<<i<<": ";
                     cout<<list1.get(i)<<endl;
                 }
                 cout<<"Press enter to continue..."<<endl;
