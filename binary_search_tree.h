@@ -1,6 +1,8 @@
 #ifndef BINARY_SEARCH_TREE_H
 #define BINARY_SEARCH_TREE_H
 
+#include <string>
+
 struct Node_ {
     int value;
     Node_* left;
@@ -21,6 +23,10 @@ class BinarySearchTree{
     void deleteValue(int value);
     int getMax();
     int getMin();
+    void printBT(const std::string& prefix, const Node_* node, bool isLeft);
+    void printBT(const Node_* node);
+    void displayBST();
+
 };
 
 #endif // BINARY_SEARCH_TREE_H

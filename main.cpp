@@ -361,7 +361,8 @@ void binaryHeapMenu(){
     cout<<"BinaryHeap"<<endl;
     cout<<"1. Add value"<<endl;
     cout<<"2. Pop max"<<endl;
-    cout<<"3. Exit"<<endl;
+    cout<<"3. Display heap"<<endl;
+    cout<<"4. Exit"<<endl;
 }
 
 void dynamicArrayMenu(){
@@ -431,6 +432,12 @@ int main() {
                 getchar();
                 break;
                 case 3:
+                heap1.displayHeap();
+                cout<<"Press enter to continue..."<<endl;
+                clear_input_buffer();
+                getchar();
+                break;
+                case 4:
                 run = false;
                 break;
             }
@@ -480,6 +487,12 @@ int main() {
                 getchar();
                 break;
                 case 6:
+                bst.displayBST();
+                cout<<"Press enter to continue..."<<endl;
+                clear_input_buffer();
+                getchar();
+                break;
+                case 7:
                 run = false;
                 break;
             }

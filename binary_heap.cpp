@@ -1,6 +1,9 @@
 #include "binary_heap.h"
+#include <iostream>
 
 using std::swap;
+using std::cout;
+using std::endl;
 
 int BinaryHeap::getParent(int i) {
     return (i - 1) / 2;
@@ -48,4 +51,30 @@ int BinaryHeap::popMax() {
         }
     }
     return max_value;
+}
+
+void BinaryHeap::displayHeap() {
+    if (heap.empty()) {
+        cout << "Heap is empty." << endl;
+        return;
+    }
+
+    displayHeapHelper("", 0, 0);
+}
+
+void BinaryHeap::displayHeapHelper(const std::string& prefix, int i, bool isLeft) {
+    cout << prefix;
+
+    cout << (isLeft ? "│   " : "    ");
+    cout << (isLeft ? "└──" : "├──" );
+
+    cout << heap[i] << endl;
+
+    if (getRightChild(i) < heap.size()) {
+        displayHeapHelper(prefix + (isLeft ? "│   " : "    "), getRightChild(i), false);
+    }
+
+    if (getLeftChild(i) < heap.size()) {
+        displayHeapHelper(prefix + (isLeft ? "│   " : "    "), getLeftChild(i), true);
+    }
 }

@@ -1,6 +1,7 @@
 #include "binary_search_tree.h"
 
-
+#include <string>
+#include <iostream>
 BinarySearchTree::BinarySearchTree() : size(0), root(nullptr) {}
 
 unsigned int BinarySearchTree::getSize(){
@@ -142,4 +143,30 @@ int BinarySearchTree::getMin(){
         }
         return temp->value;
     }else return 0;
+}
+
+void BinarySearchTree::printBT(const std::string& prefix, const Node_* node, bool isLeft)
+{
+    if( node != nullptr )
+    {
+        std::cout << prefix;
+
+        std::cout << (isLeft ? "├──" : "└──" );
+
+        // print the value of the node
+        std::cout << node->value << std::endl;
+
+        // enter the next tree level - left and right branch
+        printBT( prefix + (isLeft ? "│   " : "    "), node->left, true);
+        printBT( prefix + (isLeft ? "│   " : "    "), node->right, false);
+    }
+}
+
+void BinarySearchTree::printBT(const Node_* node)
+{
+    printBT("", node, false);    
+}
+
+void BinarySearchTree::displayBST(){
+    printBT(root);
 }
